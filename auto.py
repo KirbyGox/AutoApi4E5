@@ -13,7 +13,7 @@ import argparse
 import json
 import sys
 import time
-
+import random
 import requests as req
 
 
@@ -53,27 +53,27 @@ def main():
         'https://graph.microsoft.com/v1.0/me/drive/root',
         'https://graph.microsoft.com/v1.0/me/drive',
         'https://graph.microsoft.com/v1.0/drive/root',
-        'https://graph.microsoft.com/v1.0/users ',
+        # 'https://graph.microsoft.com/v1.0/users ',
         'https://graph.microsoft.com/v1.0/me/messages',
         'https://graph.microsoft.com/v1.0/me/mailFolders/inbox/messageRules',
         'https://graph.microsoft.com/v1.0/me/mailFolders/Inbox/messages/delta',
         'https://graph.microsoft.com/v1.0/me/drive/root/children',
-        'https://api.powerbi.com/v1.0/myorg/apps',
+        # 'https://api.powerbi.com/v1.0/myorg/apps',
         'https://graph.microsoft.com/v1.0/me/mailFolders',
         'https://graph.microsoft.com/v1.0/me/outlook/masterCategories'
     ]
-    for api in apis:
-        try:
-            r = req.get(api, headers=headers)
-            if r.status_code == 200:
-                count += 1
-                print('调用成功，API：[', api, ']')
-            else:
-                print('调用失败，API：[', api, ']')
-        except:
-            print('pass')
-            pass
-    print('总调用：', str(count), '次')
+    a = random.randint(1,9)
+    try:
+        r = req.get(apis[a], headers=headers)
+        if r.status_code == 200:
+            count += 1
+            print('调用成功，API：[', api, ']')
+        else:
+            print('调用失败，API：[', api, ']')
+    except:
+        print('pass')
+        pass
+    # print('总调用：', str(count), '次')
     print('此次运行结束时间为：', localtime)
 
 
