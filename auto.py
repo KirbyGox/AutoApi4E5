@@ -62,12 +62,10 @@ def main():
     ]
     a = random.randint(1,9)
     try:
-        r = req.get(apis[a], headers=headers)
-        if r.status_code == 200:
-            count += 1
+        r = req.get(url=apis[a], headers=headers)
             print('调用成功，apis[a])
-        else:
-            print('调用失败，apis[a])
+    else:
+        print('调用失败，apis[a])
     except:
         print('pass')
         pass
